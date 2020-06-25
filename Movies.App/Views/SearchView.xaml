@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Movies.App.Views.SearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:Movies.App.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:interactions="http://schemas.microsoft.com/xaml/behaviors"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SearchViewModel}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal" 
+             TextOptions.TextRenderingMode="Auto"        
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBox HorizontalAlignment="Stretch" Text="{Binding Pattern, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Search in selected categories" Margin="0 0 10 0" Style="{DynamicResource MaterialDesignTextBox}"/>
+            <CheckBox x:Name="MoviesCheckBox" IsChecked="{Binding MoviesChecked, UpdateSourceTrigger=PropertyChanged}" Margin=" 0 0 8 0" Style="{DynamicResource MaterialDesignCheckBox}">Movies</CheckBox>
+            <CheckBox x:Name="PeopleCheckBox" IsChecked="{Binding PersonsChecked, UpdateSourceTrigger=PropertyChanged}" Margin=" 0 0 8 0" Style="{DynamicResource MaterialDesignCheckBox}">People</CheckBox>
+            <CheckBox x:Name="RatingsCheckBox" IsChecked="{Binding RatingsChecked, UpdateSourceTrigger=PropertyChanged}" Margin=" 0 0 8 0" Style="{DynamicResource MaterialDesignCheckBox}">Ratings</CheckBox>
+            <Button HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignTitleButton}" Command="{Binding SearchCommand}">Search</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
